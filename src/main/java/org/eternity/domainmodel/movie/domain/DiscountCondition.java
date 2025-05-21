@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @SequenceGenerator(
         name = "condition_sequence"
 )
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "CONDITION_TYPE")
 public abstract class DiscountCondition {
 
     @Id
