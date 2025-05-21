@@ -17,6 +17,7 @@ public abstract class DiscountCondition {
     @GeneratedValue(generator = "condition_sequence")
     private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
     private DiscountPolicy policy;
 
     abstract public void load();
