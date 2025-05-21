@@ -1,7 +1,6 @@
 package org.eternity.domainmodel;
 
 import jakarta.persistence.EntityManager;
-import org.assertj.core.api.Assertions;
 import org.eternity.domainmodel.movie.domain.DiscountPolicy;
 import org.eternity.domainmodel.movie.domain.SequenceCondition;
 import org.junit.jupiter.api.DisplayName;
