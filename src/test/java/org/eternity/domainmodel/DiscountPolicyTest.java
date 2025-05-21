@@ -17,12 +17,17 @@ public class DiscountPolicyTest {
 
     @Test
     public void lazy_load() {
+        // 0 - 0, 1
+        // 1 - 1, 2
+        // 2 - 2, 3
+        // 3 - 3, 4
         IntStream.range(0, 4)
                 .forEach(index -> em.persist(new DiscountPolicy(new SequenceCondition(index), new SequenceCondition(index+1))));
 
         em.flush();
         em.clear();
 
+        // SequenceCondition 지연로딩
         List<DiscountPolicy> policies = em.createQuery("select p from DiscountPolicy p").getResultList();
 
         for(DiscountPolicy each : policies) {

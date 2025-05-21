@@ -1,17 +1,26 @@
 package org.eternity.domainmodel.movie.domain;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@NoArgsConstructor @Getter
+@NoArgsConstructor
+@Getter
 public class DiscountPolicy {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToMany(mappedBy = "policy",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY)
+    @BatchSize(size = 5)
     private Set<DiscountCondition> conditions = new HashSet<>();
 
     public DiscountPolicy(DiscountCondition ... conditions) {
@@ -19,6 +28,6 @@ public class DiscountPolicy {
     }
 
     public void load() {
-        conditions.stream().forEach(DiscountCondition::load);
+        conditions.forEach(DiscountCondition::load);
     }
 }
