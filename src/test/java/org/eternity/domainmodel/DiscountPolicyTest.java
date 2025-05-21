@@ -2,6 +2,7 @@ package org.eternity.domainmodel;
 
 import jakarta.persistence.EntityManager;
 import org.eternity.domainmodel.movie.domain.DiscountPolicy;
+import org.eternity.domainmodel.movie.domain.DiscountPolicyRepository;
 import org.eternity.domainmodel.movie.domain.SequenceCondition;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import java.util.stream.IntStream;
 public class DiscountPolicyTest {
     @Autowired
     private EntityManager em;
+    @Autowired
+    DiscountPolicyRepository discountPolicyRepository;
 
     @Test
     public void lazy_load() {
@@ -23,7 +26,8 @@ public class DiscountPolicyTest {
         em.flush();
         em.clear();
 
-        List<DiscountPolicy> policies = em.createQuery("select p from DiscountPolicy p").getResultList();
+        List<DiscountPolicy> policies = discountPolicyRepository.findAll();
+
 
         for(DiscountPolicy each : policies) {
             each.load();
