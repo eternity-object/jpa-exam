@@ -15,7 +15,7 @@ public class DiscountPolicy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "policy", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "policy", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @BatchSize(size = 5)
     private Set<DiscountCondition> conditions = new HashSet<>();
 

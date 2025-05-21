@@ -55,7 +55,7 @@ public abstract class DiscountCondition {
 }
 
 public class DiscountPolicy {
-    @OneToMany(mappedBy = "policy", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "policy", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @BatchSize(size = 5)
     private Set<DiscountCondition> conditions = new HashSet<>();
     ...
