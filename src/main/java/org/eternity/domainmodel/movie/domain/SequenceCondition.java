@@ -1,11 +1,13 @@
 package org.eternity.domainmodel.movie.domain;
 
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor @Getter
+@DiscriminatorColumn(name = "SEQUENCE")
 public class SequenceCondition extends DiscountCondition {
     private int sequence;
 
