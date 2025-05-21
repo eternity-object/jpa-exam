@@ -9,6 +9,8 @@ import lombok.Getter;
         sequenceName = "condition_sequence",
         initialValue = 1, allocationSize = 1
 )
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "CONDITION_TYPE")
 @Getter
 public abstract class DiscountCondition {
 

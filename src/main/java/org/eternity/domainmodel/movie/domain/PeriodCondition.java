@@ -1,5 +1,6 @@
 package org.eternity.domainmodel.movie.domain;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 @Entity
+@DiscriminatorValue("SEQUENCE")
 @NoArgsConstructor @Getter
 public class PeriodCondition extends DiscountCondition {
     private DayOfWeek dayOfWeek;
