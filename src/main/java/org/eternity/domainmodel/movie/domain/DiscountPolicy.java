@@ -15,7 +15,7 @@ public class DiscountPolicy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @org.hibernate.annotations.BatchSize(size = 10)
     private Set<DiscountCondition> conditions = new HashSet<>();
 
