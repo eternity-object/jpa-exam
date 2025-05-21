@@ -23,7 +23,7 @@ public class DiscountPolicyTest {
         em.flush();
         em.clear();
 
-        List<DiscountPolicy> policies = em.createQuery("select p from DiscountPolicy p").getResultList();
+        List<DiscountPolicy> policies = em.createQuery("select p from DiscountPolicy p join fetch p.conditions").getResultList();
 
         for(DiscountPolicy each : policies) {
             each.load();
