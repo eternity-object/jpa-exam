@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "CONDITION_TYPE")
 @SequenceGenerator(
         name = "condition_sequence",
         sequenceName = "condition_sequence",
