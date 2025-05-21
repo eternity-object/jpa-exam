@@ -23,8 +23,9 @@ public class DiscountPolicyTest {
         em.flush();
         em.clear();
 
-        // N+1 문제 해결을 위한 -> 페치 조인 사용
-        List<DiscountPolicy> policies = em.createQuery("select p from DiscountPolicy p left join fetch p.conditions", DiscountPolicy.class).getResultList();
+        List<DiscountPolicy> policies = em.createQuery("select p from DiscountPolicy p").getResultList();
+        // N+1 문제 해결을 위한 -> 페치 조인 사용( 주석처리 )
+        // List<DiscountPolicy> policies = em.createQuery("select p from DiscountPolicy p left join fetch p.conditions", DiscountPolicy.class).getResultList();
         for(DiscountPolicy each : policies) {
             each.load();
         }
