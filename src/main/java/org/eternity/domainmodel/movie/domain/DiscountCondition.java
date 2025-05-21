@@ -10,6 +10,8 @@ import lombok.Getter;
         sequenceName = "condition_sequence",
         initialValue = 1, allocationSize = 50
 )
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "condition_type")
 public abstract class DiscountCondition {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "condition_sequence")
     private Long id;
