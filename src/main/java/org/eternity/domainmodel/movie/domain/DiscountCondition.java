@@ -21,14 +21,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @SequenceGenerator(
-        name = "condition_sequence",
-        sequenceName = "condition_seq")
+        name = "condition_sequence_generator",
+        sequenceName = "condition_sequence")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "condition_type")
 public abstract class DiscountCondition {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "condition_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "condition_sequence_generator")
     private Long id;
 
     @ManyToOne
