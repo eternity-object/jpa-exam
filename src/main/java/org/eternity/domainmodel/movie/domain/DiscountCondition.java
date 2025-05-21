@@ -14,7 +14,7 @@ import lombok.Getter;
 @Getter
 public abstract class DiscountCondition {
     @Id
-    @GeneratedValue(generator = "condition_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "condition_sequence")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
