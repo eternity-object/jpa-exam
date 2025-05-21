@@ -2,6 +2,7 @@ package org.eternity.domainmodel.movie.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
@@ -18,6 +19,9 @@ public abstract class DiscountCondition {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "discount_seq_generator")
     private Long id;
 
+    @Setter
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "policy_id")
     private DiscountPolicy policy;
 
     abstract public void load();
