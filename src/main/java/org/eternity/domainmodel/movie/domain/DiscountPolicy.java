@@ -15,6 +15,8 @@ public class DiscountPolicy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "POLICY_ID")
     private Set<DiscountCondition> conditions = new HashSet<>();
 
     public DiscountPolicy(DiscountCondition ... conditions) {
