@@ -9,7 +9,7 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 @Entity
-@DiscriminatorValue("SEQUENCE")
+@DiscriminatorValue("PERIOD")
 @NoArgsConstructor @Getter
 public class PeriodCondition extends DiscountCondition {
     private DayOfWeek dayOfWeek;

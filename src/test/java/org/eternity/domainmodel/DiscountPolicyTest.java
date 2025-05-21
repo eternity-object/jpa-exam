@@ -36,18 +36,18 @@ public class DiscountPolicyTest {
 
     }
 
-//    @Test
-//    public void lazy_load() {
-//        IntStream.range(0, 4)
-//                .forEach(index -> em.persist(new DiscountPolicy(new SequenceCondition(index), new SequenceCondition(index+1))));
-//
-//        em.flush();
-//        em.clear();
-//
-//        List<DiscountPolicy> policies = em.createQuery("select p from DiscountPolicy p").getResultList();
-//
-//        for(DiscountPolicy each : policies) {
-//            each.load();
-//        }
-//    }
+    @Test
+    public void lazy_load() {
+        IntStream.range(0, 4)
+                .forEach(index -> em.persist(new DiscountPolicy(new SequenceCondition(index), new SequenceCondition(index+1))));
+
+        em.flush();
+        em.clear();
+
+        List<DiscountPolicy> policies = em.createQuery("select p from DiscountPolicy p").getResultList();
+
+        for(DiscountPolicy each : policies) {
+            each.load();
+        }
+    }
 }
