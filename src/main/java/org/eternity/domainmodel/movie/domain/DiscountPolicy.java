@@ -15,6 +15,7 @@ public class DiscountPolicy {
     private Long id;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "policy", fetch = FetchType.LAZY)
+    @org.hibernate.annotations.BatchSize(size = 2)
     private Set<DiscountCondition> conditions = new HashSet<>();
 
     public DiscountPolicy(DiscountCondition ... conditions) {
