@@ -18,7 +18,8 @@ public abstract class DiscountCondition {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "discount_condition_id_seq")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "POLICY_ID")
     private DiscountPolicy policy;
 
     abstract public void load();
