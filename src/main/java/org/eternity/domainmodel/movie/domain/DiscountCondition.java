@@ -2,6 +2,7 @@ package org.eternity.domainmodel.movie.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Getter
@@ -16,6 +17,8 @@ public abstract class DiscountCondition {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "condition_sequence")
     private Long id;
 
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "POLICY_ID")
     private DiscountPolicy policy;
 
     abstract public void load();
